@@ -40,7 +40,7 @@ A NestJS-based API service that analyzes financial transactions using AI to norm
 
 ## Prerequisites
 
-- Node.js (v18 or later)
+- Node.js (v22 or later)
 - pnpm
 - OpenAI API key
 
@@ -91,6 +91,47 @@ pnpm start:prod
 pnpm test        # Unit tests
 pnpm test:cov    # Coverage report
 ```
+
+### Docker
+
+The application supports both development and production environments using Docker Compose.
+
+#### Development Environment
+
+```bash
+# Start the development environment
+docker compose -f docker-compose.yaml -f docker-compose.dev.yaml up
+
+# Watch logs
+docker compose logs -f
+
+# Run tests
+docker compose exec api pnpm test
+```
+
+Features:
+
+- Hot reload enabled
+- Source code mounted from host
+- Debug port exposed (9229)
+- Development dependencies included
+
+#### Production Environment
+
+```bash
+# Start the production environment
+docker compose -f docker-compose.yaml -f docker-compose.prod.yaml up -d
+
+# Check logs
+docker compose logs -f
+```
+
+Features:
+
+- Optimized production build
+- Only production dependencies
+- Resource limits configured
+- Automatic restart on failure
 
 ## API Documentation
 
