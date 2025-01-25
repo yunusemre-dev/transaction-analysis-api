@@ -1,4 +1,4 @@
-# Financial Transaction Analysis System
+# Financial Transaction Analysis API
 
 A NestJS-based API service that analyzes financial transactions using AI to normalize merchant names and detect spending patterns.
 
@@ -49,8 +49,8 @@ A NestJS-based API service that analyzes financial transactions using AI to norm
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
-   cd financial-transaction-analysis
+   git clone https://github.com/yunusemre-dev/transaction-analysis-api.git
+   cd transaction-analysis-api
    ```
 
 2. Install dependencies:
