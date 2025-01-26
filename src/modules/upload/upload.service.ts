@@ -49,7 +49,9 @@ export class UploadService {
         (transaction, index, self) =>
           index ===
           self.findIndex(
-            (t) => t.normalized.merchant === transaction.normalized.merchant,
+            (t) =>
+              t.normalized.merchant.toLowerCase() ===
+              transaction.normalized.merchant.toLowerCase(),
           ),
       );
 
