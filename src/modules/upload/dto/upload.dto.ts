@@ -163,4 +163,32 @@ export class CSVAnalysisResponse {
   @ValidateNested({ each: true })
   @Type(() => Pattern)
   detected_patterns: Pattern[];
+
+  @ApiProperty({
+    description: 'Total amount of transactions',
+    example: 1425.15,
+  })
+  @IsNumber()
+  total_amount: number;
+
+  @ApiProperty({
+    description: 'Average amount of transactions',
+    example: 142.52,
+  })
+  @IsNumber()
+  average_amount: number;
+
+  @ApiProperty({
+    description: 'Total number of transactions',
+    example: 58,
+  })
+  @IsNumber()
+  total_transactions: number;
+
+  @ApiProperty({
+    description: 'Total number of merchants',
+    example: 20,
+  })
+  @IsNumber()
+  merchant_count: number;
 }

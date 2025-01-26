@@ -8,4 +8,5 @@ export const openaiConfig = registerAs('openai', () => ({
 export const appConfig = registerAs('app', () => ({
   port: parseInt(process.env.PORT, 10) || 3000,
   environment: process.env.NODE_ENV || 'development',
+  allowedOrigins: process.env.ALLOWED_ORIGINS || 'http://localhost:5173',
 }));

@@ -35,7 +35,7 @@ export class UploadService {
         };
       });
 
-      const normalizedTransactions = await Promise.all(
+      let normalizedTransactions = await Promise.all(
         transactions.map(async (transaction) => {
           const response =
             await this.analysisService.analyzeMerchant(transaction);
@@ -45,12 +45,26 @@ export class UploadService {
           };
         }),
       );
+      normalizedTransactions = normalizedTransactions.filter(
+        (transaction, index, self) =>
+          index ===
+          self.findIndex(
+            (t) => t.normalized.merchant === transaction.normalized.merchant,
+          ),
+      );
 
       const patterns = await this.analysisService.analyzePatterns(transactions);
+
+      const totalAmount = transactions.reduce((sum, t) => sum + t.amount, 0);
+      const averageAmount = totalAmount / transactions.length;
 
       return {
         normalized_transactions: normalizedTransactions,
         detected_patterns: patterns.patterns,
+        total_amount: Number(totalAmount.toFixed(2)),
+        average_amount: Number(averageAmount.toFixed(2)),
+        total_transactions: transactions.length,
+        merchant_count: normalizedTransactions.length,
       };
     } catch (error) {
       if (error instanceof BadRequestException) {

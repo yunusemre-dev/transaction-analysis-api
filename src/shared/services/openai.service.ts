@@ -72,9 +72,9 @@ Please provide:
 ${JSON.stringify(transactions, null, 2)}
 
 Look for:
-1. Payment types
+1. Payment types (e.g. subscription)
 2. Normalized merchant name (e.g., Amazon, Apple, etc.)
-3. Recurring amounts (charged amount)
+3. Recurring amounts (charged amount, put ~ for variable amounts e.g. ~31.50)
 4. Frequency of transactions (e.g., daily, weekly, monthly, yearly, 2-3 times a month)
 5. Next expected transaction dates (YYYY-MM-DD) (if applicable)
 6. Notes on the patterns (if applicable)`,
