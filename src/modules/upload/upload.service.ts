@@ -16,6 +16,10 @@ export class UploadService {
         trim: true,
       });
 
+      if (records.length === 0) {
+        throw new BadRequestException('CSV file is empty');
+      }
+
       const transactions: TransactionDto[] = records.map((record: any) => {
         if (!record.date || !record.description || !record.amount) {
           throw new BadRequestException(

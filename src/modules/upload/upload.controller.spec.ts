@@ -1,10 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import {
-  BadRequestException,
-  ParseFilePipe,
-  MaxFileSizeValidator,
-  FileTypeValidator,
-} from '@nestjs/common';
+import { BadRequestException, ParseFilePipe } from '@nestjs/common';
 import { UploadController } from './upload.controller';
 import { UploadService } from './upload.service';
 
@@ -45,6 +40,10 @@ describe('UploadController', () => {
         notes: 'Regular monthly purchase pattern detected',
       },
     ],
+    total_amount: 29.99,
+    average_amount: 29.99,
+    total_transactions: 1,
+    merchant_count: 1,
   };
 
   beforeEach(async () => {
@@ -82,7 +81,6 @@ describe('UploadController', () => {
 
     controller = module.get<UploadController>(UploadController);
 
-    // Mock the parameter decorator validation
     jest
       .spyOn(controller as any, 'uploadTransactions')
       .mockImplementation(async (file: Express.Multer.File) => {

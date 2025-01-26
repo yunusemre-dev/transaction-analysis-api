@@ -56,7 +56,10 @@ export class UploadController {
     @UploadedFile(
       new ParseFilePipe({
         validators: [
-          new MaxFileSizeValidator({ maxSize: 1024 * 1024 }), // 1MB
+          new MaxFileSizeValidator({
+            maxSize: 1024 * 1024,
+            message: 'File is too large. Maximum file size is 1MB.',
+          }), // 1MB
           new FileTypeValidator({ fileType: 'text/csv' }),
         ],
       }),
